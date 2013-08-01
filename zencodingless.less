@@ -1,0 +1,494 @@
+/*positioning*/
+.pos(@x) when(@x = s){position:static;}/*position*/
+.pos(@x) when(@x = r){position:relative;}
+.pos(@x) when(@x = a){position:absolute;}
+.pos(@x) when(@x = f){position:fixed;}
+
+.t(@x) when(isnumber(@x)){top:unit(unit(@x),px);}/*top*/ /*隐患,如果是百分比,或者其他的单位：em等*/
+.t(@x) when(@x = a){top:auto;}  	
+.r(@x) when(isnumber(@x)){right:unit(unit(@x),px);}/*right*/
+.r(@x) when(@x = a){right:auto;}
+.b(@x) when(isnumber(@x)){bottom:unit(unit(@x),px);}/*bottom*/
+.b(@x) when(@x = a){bottom:auto;}
+.l(@x) when(isnumber(@x)){left:unit(unit(@x),px);}/*left*/
+.l(@x) when(@x = a){left:auto;}
+
+.z(@x) when(isnumber(@x)){z-index: unit(unit(@x),px);}/*z-index*/
+.z(@x) when(@x = a){z-index: auto;}
+
+
+/*Box behavior and properties*/
+.fl(@x) when(@x = n){float: none;}/*float*/
+.fl(@x) when(@x = l){float: left;}
+.fl(@x) when(@x = r){float: right;}
+
+.cl(@x) when(@x = n){clear:none;}/*clear*/
+.cl(@x) when(@x = l){clear:left;}
+.cl(@x) when(@x = r){clear:right;}
+.cl(@x) when(@x = b){clear:both;}
+
+.d(@x) when(@x = n){display:none;}/*display*/
+.d(@x) when(@x = b){display:block;}
+.d(@x) when(@x = i){display:inline;}
+.d(@x) when(@x = ib){display:inline-block;}
+.d(@x) when(@x = mib){display:-moz-inline-block;}
+
+.d(@x) when(@x = mis){display:-moz-inline-stack;}
+.d(@x) when(@x = li){display:list-item;}
+.d(@x) when(@x = ri){display:run-in;}
+.d(@x) when(@x = cp){display:compact;}
+.d(@x) when(@x = tb){display:table;}
+.d(@x) when(@x = tbcp){display:table-caption;}
+.d(@x) when(@x = tbcl){display:table-column;}
+.d(@x) when(@x = tbclg){display:table-column-group;}
+.d(@x) when(@x = tbhg){display:table-header-group;}
+.d(@x) when(@x = tbfg){display:table-footer-group;}
+.d(@x) when(@x = tbr){display:table-row;}
+.d(@x) when(@x = tbrg){display:table-row-group;}
+.d(@x) when(@x = tbc){display:table-cell;}
+
+.v(@x) when(@x = v){visibility: visible;}/*visibility*/
+.v(@x) when(@x = h){visibility: h;}
+.v(@x) when(@x = c){visibility: collapse;}
+
+/*尽量扁平化的书写------后期也许可以考虑合并*/
+.ov(@x) when(@x = v){overflow:visible;}/*overflow*/
+.ov(@x) when(@x = h){overflow:hidden;}
+.ov(@x) when(@x = s){overflow:scroll;}
+.ov(@x) when(@x = a){overflow:auto;}
+.ov(@x) when(@x = v){overflow:visible;}
+
+.ovx(@x) when(@x = h){overflow-x:hidden;}/*overflow-x*/
+.ovx(@x) when(@x = s){overflow-x:scroll;}
+.ovx(@x) when(@x = a){overflow-x:auto;}
+.ovx(@x) when(@x = v){overflow-x:visible;}
+
+.ovy(@x) when(@x = h){overflow-y:hidden;}/*overflow-y*/
+.ovy(@x) when(@x = s){overflow-y:scroll;}
+.ovy(@x) when(@x = a){overflow-y:auto;}
+.ovy(@x) when(@x = v){overflow-y:visible;}
+
+.ovs(@x) when(@x = a){overflow-style:auto;}
+.ovs(@x) when(@x = s){overflow-style:scrollbar;}
+.ovs(@x) when(@x = p){overflow-style:panner;}
+.ovs(@x) when(@x = m){overflow-style:move;}
+.ovs(@x) when(@x = mq){overflow-style:marquee;}
+
+/*zoom:1这个后期再考虑要不要做*/
+.bxz(@x) when(@x = cb){box-sizing:content-box;}/*box-sizing*/
+.bxz(@x) when(@x = bb){box-sizing:border-box;}
+
+.bxsh(@x) when(@x = n){
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none; 
+}
+.bxsh(@x){
+	box-shadow:@x;
+	-moz-box-shadow:@x;
+	-webkit-box-shadow:@x; 
+}
+
+
+/*Sizing*/
+.m(@x){margin:@x;}/*margin 参数可以是任意个(后期可以做些个数控制)*/
+.mt(@x){margin-top:unit(unit(@x),px);}/*margin-top*/
+.mr(@x){margin-right:unit(unit(@x),px);}/*margin-right*/
+.mb(@x){margin-bottom: unit(unit(@x),px);}/*margin-bottom*/
+.ml(@x){margin-left: unit(unit(@x),px);}/*margin-left*/
+
+.p(@x){padding:@x;}/*padding 同margin，参数可以任意个*/
+.pt(@x){padding-top:unit(unit(@x),px);}
+.pr(@x){padding-right: unit(unit(@x),px);}
+.pb(@x){padding-right: unit(unit(@x),px);}
+.pl(@x){padding-left: unit(unit(@x),px);}
+
+.w(@x) when(@x = a){width:auto;}/*width*/
+.w(@x){width:@x;}/*不加单位的原因是怕如果是百分比，或者其他的单位，所以这块是隐患，后期优化*/
+.maw(@x) when(@x = n){max-width: none;}
+.max(@x){max-width:@x;}
+.miw(@x){min-width: @x;}
+
+.h(@x) when(@x = a){height:auto;}/*width*/
+.h(@x){height:@x;}
+.mah(@x) when(@x = n){max-height: none;}
+.mah(@x){max-height:@x;}
+.mih(@x){min-height: @x;}
+
+
+/*Color appearance*/
+.o(@x) when(@x = n){outline:none;}/*outline*/
+.o(@x){outline:@x;}
+
+.oo(@x){outline-offset:@x;}/*outline-offset*/
+
+.ow(@x){outline-width: @x;}/*outline-width*/
+
+.os(@x){outline-style: @x;}/*outline-style*/
+
+.oc(@x) when(@x = i){outline-color: invert;}/*outline-color*/
+.oc(@x){outline-color: @x;}
+
+.bd(@x) when(@x = n){border: none;}/*border*/
+.bd(@x){border: @x;}
+
+.bdbk(@x) when(@x = c){border-break: close;}/*border-break*/
+.bcbk(@x){border-break: @x;}
+
+.bdcl(@x) when(@x = c){border-collapse: collapse;}/*border-collapse*/
+.bdcl(@x) when(@x = s){border-collapse: separate;}
+
+.bdc(@x){border-color: @x;}/*border-color*/
+
+.bdi(@x){-webkit-border-image: @x; -moz-border-image: @x; -o-border-image: @x; border-image: @x;}/**/
+
+.bdti(@x) when(@x = n){border-top-image: none;}/*border-top-image*/
+.bdti(@x){border-top-image: @x;} 
+.bdri(@x) when(@x = n){border-right-image: none;}/*border-right-image*/
+.bdri(@x){border-right-image: @x;} 
+.bdbi(@x) when(@x = n){border-bottom-image: none;}/*border-bottom-image*/
+.bdbi(@x){border-bottom-image: @x;} 
+.bdli(@x) when(@x = n){border-left-image: none;}/*border-left-image*/
+.bdli(@x){border-left-image: @x;} 
+
+.bdci(@x) when(@x = n){border-corner-image: none;}/*border-corner-image*/
+.bdci(@x){border-corner-image: @x;} /*图片链接，地址优化输入*/
+
+.bdtli(@x) when(@x = n){border-top-left-image:none;}/*border-left-top-image*/
+.bdtli(@x) when(@x = c){border-top-left-image:continue;}
+.bdtli(@x){border-top-left-image:@x;}
+.bdtri(@x) when(@x = n){border-top-right-image:none;}/*border-top-right-image*/
+.bdtri(@x) when(@x = c){border-top-right-image:continue;}
+.bdtri(@x){border-top-right-image:@x;}
+.bdbli(@x) when(@x = n){border-bottom-left-image:none;}/*border-bottom-left-image*/
+.bdbli(@x) when(@x = c){border-bottom-left-image:continue;}
+.bdbli(@x){border-bottom-left-image:@x;}
+.bdbri(@x) when(@x = n){border-bottom-right-image:none;}/*border-bottom-right-image*/
+.bdbri(@x) when(@x = c){border-bottom-right-image:continue;}
+.bdbri(@x){border-bottom-right-image:@x;}
+
+.bdf(@x) when(@x = c){-webkit-border-fit: clip; border-fit: clip;}/*border-fit*/
+.bdf(@x) when(@x = r){-webkit-border-fit: repeat; border-fit: repeat;}
+.bdf(@x) when(@x = sc){-webkit-border-fit: scale; border-fit: scale;}
+.bdf(@x) when(@x = st){-webkit-border-fit: strentch; border-fit: strentch;}
+.bdf(@x) when(@x = ow){-webkit-border-fit: overwrit; border-fit: overwrit;}
+.bdf(@x) when(@x = of){-webkit-border-fit: overflow; border-fit: overflow;}
+.bdf(@x) when(@x = sp){-webkit-border-fit: space; border-fit: space;}
+
+.bdlt(@x) when(@x = a){border-length:auto;}/*border-length*/ 
+.bdlt(@x){border-length:@x;}
+
+.bdsp(@x){border-spacing: @x;}/*border-spacing*/
+
+.bds(@x) when(@x = n){border-style:none;}/*border-style*/
+.bds(@x) when(@x = h){border-style: hidden;}
+.bds(@x) when(@x = dt){border-style: dotted;}
+.bds(@x) when(@x = ds){border-style: dashed;}
+.bds(@x) when(@x = s){border-style: solid;}
+.bds(@x) when(@x = db){border-style: double;}
+.bds(@x) when(@x = dtds){border-style: dot-dashed;}
+.bds(@x) when(@x = dtdtds){border-style: dot-dot-dash;}
+.bds(@x) when(@x = w){border-style: wave;}
+.bds(@x) when(@x = g){border-style: groove;}
+.bds(@x) when(@x = r){border-style: ridge;}
+.bds(@x) when(@x = i){border-style: inset;}
+.bds(@x) when(@x = o){border-style: outset;}
+
+.bdw(@x){border-width: @x;}/*border-width*/
+
+.bdt(@x){border-top: @x;}/*border-top*/
+.bdts(@x) when(@x = n){border-top-style:none;}
+.bdts(@x){border-top-style:@x;}
+.bdtc(@x){border-top-color:@x;}
+.bdr(@x){border-right: @x;}/*border-right*/
+.bdrs(@x) when(@x = n){border-right-style:none;}
+.bdrs(@x){border-right-style:@x;}
+.bdrc(@x){border-right-color:@x;}
+.bdb(@x){border-bottom: @x;}/*border-bottom*/
+.bdbs(@x) when(@x = n){border-bottom-style:none;}
+.bdbs(@x){border-bottom-style:@x;}
+.bdbc(@x){border-bottom-color:@x;}
+.bdl(@x){border-left: @x;}/*border-left*/
+.bdls(@x) when(@x = n){border-left-style:none;}
+.bdls(@x){border-left-style:@x;}
+.bdlc(@x){border-left-color:@x;}
+
+.bdrz(@x){						/*border-radius*/
+	border-radius:@x; 
+	-webkit-border-radius:@x; -
+	moz-border-radius:@x;
+}
+.bdtrrz(@x){
+	border-top-right-radius: @x;
+	-webkit-border-top-right-radius:@x;
+	-moz-border-top-right-radius:@x;
+}
+.bdtlrz(@x){
+	border-top-left-radius: @x;
+	-webkit-border-top-left-radius:@x;
+	-moz-border-top-left-radius:@x;
+}
+.bdbrrz(@x){
+	border-bottom-right-radius: @x;
+	-webkit-border-bottom-right-radius:@x;
+	-moz-border-bottom-right-radius:@x;
+}
+.bdblrz(@x){
+	border-bottom-left-radius: @x;
+	-webkit-border-bottom-left-radius:@x;
+	-moz-border-bottom-left-radius:@x;
+}
+
+.bg(@x) when(@x = n){background: none;}/*background*/
+.bg(@x){background: @x;}
+.bgc(@x) when(@x = t){background-color: transparent;}/*background-color*/
+.bgc(@x){background-color: @x;}
+.bgi(@x) when(@x = n){background-image: none;}/*background-image*/
+.bgi(@x){background-image: @x;}
+.bgr(@x) when(@x = n){background-repeat: no-repeat;}/*background-repeat*/
+.bgr(@x) when(@x = x){background-repeat: repeat-x;}
+.bgr(@x) when(@x = y){background-repeat: repeat-y;}
+.bgr(@x) when(@x = r){background-repeat: repeat;}
+.bga(@x) when(@x = f){background-attachment: fixed;}/*background-attachment*/
+.bga(@x) when(@x = s){background-attachment: scroll;}
+.bgp(@x){background-position:@x;}/*background-position*/
+.bgpx(@x){-ms-background-position-x: @x; background-position-x: @x;}/*background-position*/
+.bgpy(@x){-ms-background-position-y: @x;
+background-position-y: @x;}
+.bgbk(@x) when(@x = bb){background-break:bounding-box;}/*background-break*/
+.bgbk(@x) when(@x = eb){background-break: each-box;}
+.bgbk(@x) when(@x = c){background-break: continuous;}
+.bgcp(@x) when(@x = bb){-webkit-background-clip: border-box; -moz-background-clip: border-box; background-clip: border-box;}/*background-clip*/
+.bgcp(@x) when(@x = eb){-webkit-background-clip: each-box; -moz-background-clip: each-box; background-clip: each-box;}
+.bgcp(@x) when(@x = nc){-webkit-background-clip: no-clip; -moz-background-clip: no-clip; background-clip: no-clip;}
+.bgo(@x) when(@x = pb){-webkit-background-origin: padding-box; background-origin: padding-box;}
+.bgo(@x) when(@x = bb){-webkit-background-origin: border-box; background-origin: border-box;}
+.bgo(@x) when(@x = cb){-webkit-background-origin: content-box; background-origin: content-box;}
+.bgz(@x) when(@x = a){-webkit-background-size: auto; background-size: auto;}
+.bgz(@x) when(@x = ct){-webkit-background-size: contain; background-size: contain;}
+.bgz(@x) when(@x = cv){-webkit-background-origin: cover; background-origin: cover;}
+.bgz(@x){-webkit-background-size: @x; background-size: @x;}
+
+.c(@x){color:@x;}
+
+/*Special content types*/
+.tbl(@x) when(@x = a){table-layout: auto;}/*table-layout*/
+.tbl(@x) when(@x = f){table-layout: fixed;}
+.tbl(@x){table-layout: @x;}
+
+.cps(@x) when(@x = t){caption-side: top;}/*caption-side*/
+.cps(@x) when(@x = b){caption-side: bottom;}
+
+.ec(@x) when(@x = s){empty-cells: show;}/*empty-cells*/
+.ec(@x) when(@x = h){empty-cells: hide;}
+
+.lis(@x) when(@x = n){list-style: none}/*list-style*/
+.lis(@x){list-style: @x;}
+
+.lisp(@x) when(@x = i){list-style-position: inside;}/*list-style-position*/
+.lisp(@x) when(@x = o){list-style-position: outside;}
+
+.list(@x) when(@x = n){list-style: none;}/*list-style-type*/
+.list(@x) when(@x = d){list-style: disc;}
+.list(@x) when(@x = c){list-style: circle;}
+.list(@x) when(@x = s){list-style: square;}
+.list(@x) when(@x = dc){list-style: decimal;}
+.list(@x) when(@x = dclz){list-style: decimal-leading-zero;}
+.list(@x) when(@x = lr){list-style-type: lower-roman;}
+.list(@x) when(@x = ur){list-style-type: upper-roman;}
+
+.lisi(@x) when(@x = n){list-style-image: none;}/*list-style-image*/
+.lisi(@x){list-style-image: @x;} 
+
+.q(@x) when(@x = n){quotes: none;}/*quotes*/
+.q(@x) when(@x = ru){quotes: '00AB' '00BB' '201E' '201C';}
+.q(@x) when(@x = en){quotes: '201C' '201D' '2018' '2019';}
+
+.ct(@x) when(@x = nor){content: normal;}/*content*/
+.ct(@x) when(@x = oq){content: open-quote;}
+.ct(@x) when(@x = noq){content: no-open-quote;}
+.ct(@x) when(@x = cq){content: close-quote;}
+.ct(@x) when(@x = ncq){content: no-close-quote;}
+.ct(@x){content: @x;}
+
+.coi(@x){counter-increment: @x;}/*counter-increment*/
+
+.cor(@x){counter-reset: @x;}/*counter-reset*/
+
+
+/*Text*/
+.va(@x) when(@x = sup){vertical-align: sup;}/*vertical-align*/
+.va(@x) when(@x = t){vertical-align: top;}
+.va(@x) when(@x = tt){vertical-align: text-top;}
+.va(@x) when(@x = m){vertical-align: middle;}
+.va(@x) when(@x = bl){vertical-align: baseline;}
+.va(@x) when(@x = b){vertical-align: bottom;}
+.va(@x) when(@x = tb){vertical-align: text-bottom;}
+.va(@x) when(@x = sub){vertical-align: sub;}
+
+.ta(@x) when(@x = l){text-align: left;}/*text-align*/
+.ta(@x) when(@x = c){text-align: center;}
+.ta(@x) when(@x = r){text-align: right;}
+.ta(@x) when(@x = j){text-align: justify;}
+
+.tal(@x) when(@x = a){text-align-last:auto;}/*text-align-last*/
+.tal(@x) when(@x = l){text-align-last:left;}
+.tal(@x) when(@x = c){text-align-last:center;}
+.tal(@x) when(@x = r){text-align-last:right;}
+
+.td(@x) when(@x = n){text-decoration: none;}/*text-decoration*/
+.td(@x) when(@x = o){text-decoration: overline;}
+.td(@x) when(@x = l){text-decoration: line-through;}
+.td(@x) when(@x = u){text-decoration: underline;}
+
+.te(@x) when(@x = n){text-emphasis: none;}/*text-emphasis*/
+.te(@x) when(@x = ac){text-emphasis: accent;}
+.te(@x) when(@x = dt){text-emphasis: dot;}
+.te(@x) when(@x = c){text-emphasis: circle;}
+.te(@x) when(@x = ds){text-emphasis: disc;}
+.te(@x) when(@x = b){text-emphasis: before;}
+.te(@x) when(@x = a){text-emphasis: after;}
+
+.th(@x) when(@x = a){text-height: auto;}/*text-height*/
+.th(@x) when(@x = f){text-height: font-size;}
+.th(@x) when(@x = t){text-height: text-size;}
+.th(@x) when(@x = m){text-height: max-height;}
+
+.ti(@x){text-indent: @x;}/*这个地方可以考虑将我们约定的那些规范包含进来*/
+
+.tj(@x) when(@x = a){-ms-text-justify: auto; text-justify: auto;}/*text-justify*/
+.tj(@x) when(@x = iw){-ms-text-justify: inter-word; text-justify: inter-word;}
+.tj(@x) when(@x = ii){-ms-text-justify: inter-ideograph; text-justify:inter-ideograph;}
+.tj(@x) when(@x = ic){-ms-text-justify: inter-cluster; text-justify: inter-cluster;}
+.tj(@x) when(@x = d){-ms-text-justify: distribute; text-justify: distribute;}
+.tj(@x) when(@x = k){-ms-text-justify: kashida; text-justify: kashida;}
+.tj(@x) when(@x = t){-ms-text-justify: tibetan; text-justify: tibetan;}
+
+.to(@x) when(@x = n){text-outline: none;}/*text-outline*/
+.to(@x:0px,@y:0px,@color:#000){text-outline: @x @y @color;}
+
+.tr(@x) when(@x = n){text-replace: none;}/*text-replace*/
+
+.tt(@x) when(@x = n){text-transform: none;}/*text-transform*/
+.tt(@x) when(@x = u){text-transform: uppercase;}
+.tt(@x) when(@x = c){text-transform: capitalize;}
+.tt(@x) when(@x = l){text-transform: lowercase;}
+
+.tw(@x) when(@x = n){text-wrap: none;}/*text-wrap*/
+.tw(@x) when(@x = nor){text-wrap: normal;}
+.tw(@x) when(@x = u){text-wrap: unrestricted;}
+.tw(@x) when(@x = s){text-wrap: suppress;}
+
+.ts(@x) when(@x = n){text-shadow: none;}/*text-shadow可能有三参数或者更多*/
+.ts(@x:0, @y:0, @color:#000){text-shadow:@x @y @color;}
+
+.lh(@x){line-height: @x;}/*line-height*/
+
+.whs(@x) when(@x = nor){white-space: normal;}/*white-space*/
+.whs(@x) when(@x = p){white-space: pre;}
+.whs(@x) when(@x = nw){white-space: nowrap;}
+.whs(@x) when(@x = pw){white-space: pre-wrap;}
+.whs(@x) when(@x = pl){white-space: pre-line;}
+
+.whsc(@x) when(@x =nor){white-space-collapse: normal;}/*white-space-collapse*/
+.whsc(@x) when(@x =k){white-space-collapse: keep-all;}
+.whsc(@x) when(@x = l){white-space-collapse: loose;}
+.whsc(@x) when(@x = bs){white-space-collapse: break-strict;}
+.whsc(@x) when(@x = ba){white-space-collapse: break-all;}
+
+.wob(@x) when(@x = nor){-ms-word-break: normal; word-break: normal;}/*word-break*/
+.wob(@x) when(@x = k){-ms-word-break: keep-all; word-break: keep-all;}
+.wob(@x) when(@x = l){-ms-word-break: loose; word-break: loose;}
+.wob(@x) when(@x = bs){-ms-word-break: break-strict; word-break: break-strict;}
+.wob(@x) when(@x = ba){-ms-word-break: break-all; word-break: break-all;}
+
+.wos(@x){word-spacing: @x;}/*word-spacing*/
+
+.wow(@x) when(@x = n){-ms-word-wrap: none; word-wrap: none;}/*word-wrap*/
+.wow(@x) when(@x = nor){-ms-word-wrap: normal; word-wrap: normal;}
+.wow(@x) when(@x = u){-ms-word-wrap: unrestricted; word-wrap: unrestricted;}
+.wow(@x) when(@x = s){-ms-word-wrap: suppress; word-wrap: suppress;}
+
+.lts(@x){letter-spacing: @x;}/*letter-spacing*/
+
+.f(@x){font:@x;}/*这里可以加多一些默认的字体*/
+
+.fw(@x) when(@x = nor){font-weight: normal;}/*font-weight*/
+.fw(@x) when(@x =b){font-weight: bold;}
+.fw(@x) when(@x = br){font-weight: bolder;}
+.fw(@x) when(@x = lr){font-weight: lighter;}
+
+.fs(@x) when(@x = nor){font-style: normal;}/*font-style*/
+.fs(@x) when(@x = i){font-style: italic;}
+.fs(@x) when(@x = o){font-style: oblique;}
+
+.fv(@x) when(@x = nor){font-variant: normal;}/*font-variant*/
+.fv(@x) when(@x = sc){font-variant: small-caps;}
+
+.fz(@x){font-size: @x;}/*font-size*/
+
+.fza(@x) when(@x = n){font-size-adjust: none;}/*font-size-adjust*/
+.fza(@x){font-size-adjust: @x;}
+
+.ff(@x){font-family: @x;}
+
+.fef(@x) when(@x = n){font-effect: none;}/*font-effect*/
+.fef(@x) when(@x = eg){font-effect: engrave;}
+.fef(@x) when(@x = eb){font-effect: emboss;}
+.fef(@x) when(@x = o){font-effect: outline;}
+
+.fem(@x){font-emphasize: @x;}/*font-emphasize*/
+
+.femp(@x) when(@x = b){font-emphasize-position: before;}/*font-emphasize*/
+.femp(@x) when(@x = a){font-emphasize-position: after;}
+
+.fems(@x) when(@x = n){font-emphasize-style: none;}/*font-emphasize-style*/
+.fems(@x) when(@x = ac){font-emphasize-style: accent;}
+.fems(@x) when(@x = dt){font-emphasize-style: dot;}
+.fems(@x) when(@x = c){font-emphasize-style: circle;}
+.fems(@x) when(@x = ds){font-emphasize-style: disc;}
+
+.fsm(@x) when(@x = a){font-smooth: auto;}/*font-smooth*/
+.fsm(@x) when(@x = n){font-smooth: never;}
+.fsm(@x) when(@x = aw){font-smooth: always;}
+
+.fst(@x) when(@x = nor){font-stretch: normal;}/*font-stretch*/
+.fst(@x) when(@x = uc){font-stretch: ultra-condensed;}
+.fst(@x) when(@x = ec){font-stretch: extra-condensed;}
+.fst(@x) when(@x = c){font-stretch: condensed;}
+.fst(@x) when(@x = sc){font-stretch: semi-condensed;}
+.fst(@x) when(@x = se){font-stretch: senmi-expanded;}
+.fst(@x) when(@x = e){font-stretch: expanded;}
+.fst(@x) when(@x = ee){font-stretch: extra-expanded;}
+.fst(@x) when(@x = ue){font-stretch: ultra-expanded;}
+
+
+/*Visual properties*/
+.rz(@x) when(@x = n){resize:none;}/*重新定大小*/
+.rz(@x) when(@x = b){resize:both;}
+.rz(@x) when(@x = h){resize:horizontal;}
+.rz(@x) when(@x = v){resize:vertical;}
+
+.cur(@x) when(@x = a){cursor:auto;}/*鼠标指针*/
+.cur(@x) when(@x = d){cursor:default;}
+.cur(@x) when(@x = c){cursor:crosshair;}
+.cur(@x) when(@x = ha){cursor:hand;}
+.cur(@x) when(@x = he){cursor:help;}
+.cur(@x) when(@x = m){cursor:move;}
+.cur(@x) when(@x = p){cursor:pointer;}
+.cur(@x) when(@x = t){cursor:text;}
+
+
+/*Print*/
+.pgbb(@x) when(@x = a){page-break-before:auto;}/*page-break-before*/
+.pgbb(@x) when(@x = aw){page-break-before:always;}
+.pgbb(@x) when(@x = l){page-break-before:left;}
+.pgbb(@x) when(@x = r){page-break-before:right;}
+
+.pgbi(@x) when(@x = a){page-break-inside: auto;}/*page-break-inside*/
+.pgbi(@x) when(@x = av){page-break-inside: avoid;}
+
+.pgba(@x) when(@x = a){page-break-after: auto;}/*page-break-after*/
+.pgba(@x) when(@x = aw){page-break-after: always;}
+.pgba(@x) when(@x = l){page-break-after: left;}
+.pgba(@x) when(@x = r){page-break-after: right;}
