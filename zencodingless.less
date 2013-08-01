@@ -4,7 +4,7 @@
 .pos(@x) when(@x = a){position:absolute;}
 .pos(@x) when(@x = f){position:fixed;}
 
-.t(@x) when(isnumber(@x)){top:unit(unit(@x),px);}/*top*/ /*隐患,如果是百分比,或者其他的单位：em等*/
+.t(@x) when(isnumber(@x)){top:unit(unit(@x),px);}/*top*/ 
 .t(@x) when(@x = a){top:auto;}  	
 .r(@x) when(isnumber(@x)){right:unit(unit(@x),px);}/*right*/
 .r(@x) when(@x = a){right:auto;}
@@ -91,20 +91,20 @@
 
 
 /*Sizing*/
-.m(@x){margin:@x;}/*margin 参数可以是任意个(后期可以做些个数控制)*/
+.m(@x){margin:@x;}/*margin*/
 .mt(@x){margin-top:unit(unit(@x),px);}/*margin-top*/
 .mr(@x){margin-right:unit(unit(@x),px);}/*margin-right*/
 .mb(@x){margin-bottom: unit(unit(@x),px);}/*margin-bottom*/
 .ml(@x){margin-left: unit(unit(@x),px);}/*margin-left*/
 
-.p(@x){padding:@x;}/*padding 同margin，参数可以任意个*/
+.p(@x){padding:@x;}/*padding*/
 .pt(@x){padding-top:unit(unit(@x),px);}
 .pr(@x){padding-right: unit(unit(@x),px);}
 .pb(@x){padding-right: unit(unit(@x),px);}
 .pl(@x){padding-left: unit(unit(@x),px);}
 
 .w(@x) when(@x = a){width:auto;}/*width*/
-.w(@x){width:@x;}/*不加单位的原因是怕如果是百分比，或者其他的单位，所以这块是隐患，后期优化*/
+.w(@x){width:@x;}
 .maw(@x) when(@x = n){max-width: none;}
 .max(@x){max-width:@x;}
 .miw(@x){min-width: @x;}
